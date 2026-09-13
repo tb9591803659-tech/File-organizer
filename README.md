@@ -45,13 +45,13 @@ git clone [https://github.com/](https://github.com/)<your-username>/file-organiz
 cd file-organizer
 ```
 
-# How to Use File Organizer
+## How to Use File Organizer
 
 A step-by-step guide to running and using the File Organizer script on Windows, macOS, and Linux.
 
 ---
 
-## 1. Prerequisites
+### 1. Prerequisites
 
 Make sure you have **Python 3.6 or higher** installed.
 
@@ -63,7 +63,7 @@ python --version
 python3 --version
 ```
 
-## 2. Setup
+### 2. Setup
 
 clone or download this repository :
 ```bash
@@ -79,21 +79,21 @@ file-organizer/
 └── README.md
 ```
 
-## 3. Running the Script
+### 3. Running the Script
 
 Open your terminal or command prompt inside the project folder and run:
 
-### Windows 
+#### Windows 
 ```bash
 python src/file_organizer.py
 ```
 
-### Linux
+#### Linux
 ```bash
 python3 src/file_organizer.py
 ```
 
-## 4.Entering directory paths
+### 4.Entering directory paths
 
 When prompted with Enter path:, provide the absolute path to the directory you want to organize.
 
@@ -102,7 +102,7 @@ Enter path: C:\Users\YourUsername\Downloads
 Enter path: C:\Users\YourUsername\Desktop\MessyFolder
 ```
 
-# 5. Final Results
+### 5. Final Results
 The script validates the path to ensure the folder exists.
 
 It loops through all individual files in the target folder.
