@@ -1,0 +1,58 @@
+
+import os 
+import shutil 
+
+moved_files = 0
+
+def file_detector(extension) :
+    extension = extension.lower()
+
+    EXTENSION_MAP = {
+    "Images": [".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp"],
+    "Videos": [".mp4", ".mkv", ".avi", ".mov"],
+    "Audio": [".mp3", ".wav", ".aac", ".flac"],
+    "Documents": [".pdf", ".doc", ".docx", ".txt", ".pptx", ".xlsx", ".csv"],
+    "Programming": [".py", ".java", ".c", ".cpp", ".js", ".html", ".css"],
+    "Archives": [".zip", ".rar", ".7z", ".tar"],
+    "Executables": [".exe", ".msi", ".apk"],
+    "Fonts": [".ttf", ".otf"],
+    "3D Models": [".obj", ".stl", ".fbx"]
+    }
+
+    for category,extensions in EXTENSION_MAP.items() :
+        if extension in extensions :
+            return category
+    
+def file_mover(file,directory) :
+    global moved_files
+    name, extension = os.path.splitext(file)
+    category = file_detector(extension)
+    source = os.path.join(directory,file)
+    if not os.path.isfile(source):
+        return
+    destination_folder = os.path.join(directory,category)
+    os.makedirs(destination_folder,exist_ok=True)
+    destination = os.path.join(destination_folder,file)
+    print("From:",source)
+    print("To:",destination)
+    if shutil.move(source,destination) :
+        moved_files += 1
+    print(f"Moved : {file}->{category}")
+
+directory = input("Enter path :").strip().strip('"')
+print("Directory entered:", repr(directory))
+if os.path.isdir(directory):
+    files = os.listdir(directory)
+
+    for file in files:
+        name, extension = os.path.splitext(file)
+        category = file_detector(extension)
+        print(file, "->", category)
+        file_mover(file, directory)
+    print(f"Organized {moved_files} files")
+else:
+    print("No such directory")
+
+
+    
+
